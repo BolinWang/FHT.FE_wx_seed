@@ -1,0 +1,6 @@
+/**index.wxss**/
+.projectName {
+  font-size: 36rpx;
+  color: #101010;
+  padding: 190rpx 0 100rpx 0;
+}
