@@ -1,5 +1,15 @@
 <!--pages/index/index.wxml-->
 <view class="container">
-  <view class="projectName">复恒科技基建</view>
+  <zan-cell-group title-width="90">
+    <zan-cell title="复恒科技" is-link></zan-cell>
+    <zan-cell title="小程序" is-link url="/pages/index/index"></zan-cell>
+    <zan-cell title="UI组件" label="youzan" value="vant-weapp"></zan-cell>
+    <zan-cell title="表单">
+      <input slot="footer" type="digit" placeholder="带小数点的数字键盘"/>
+    </zan-cell>
+    <zan-cell title="开关">
+      <switch slot="footer" checked/>
+    </zan-cell>
+  </zan-cell-group>
 </view>
 
