@@ -1,37 +1,33 @@
-'use strict';
+import { create } from '../common/create';
+import { transition } from '../mixins/transition';
 
-Component({
-  properties: {
-    show: {
-      type: Boolean,
-      value: false
-    },
+create({
+  mixins: [transition(false)],
 
+  props: {
+    transition: String,
+    overlayStyle: String,
     overlay: {
       type: Boolean,
       value: true
     },
-
     closeOnClickOverlay: {
       type: Boolean,
       value: true
     },
-
-    // 弹出方向
-    type: {
+    position: {
       type: String,
       value: 'center'
     }
   },
 
   methods: {
-    handleMaskClick: function handleMaskClick() {
-      this.triggerEvent('click-overlay', {});
+    onClickOverlay() {
+      this.$emit('click-overlay');
 
-      if (!this.data.closeOnClickOverlay) {
-        return;
+      if (this.data.closeOnClickOverlay) {
+        this.$emit('close');
       }
-      this.triggerEvent('close', {});
     }
   }
 });

@@ -1,26 +1,24 @@
-'use strict';
+import { create } from '../common/create';
 
-Component({
-  options: {
-    multipleSlots: true
-  },
+create({
+  classes: [
+    'thumb-class',
+    'title-class',
+    'price-class',
+    'desc-class',
+    'num-class'
+  ],
 
-  externalClasses: ['card-class', 'thumb-class'],
-
-  properties: {
-    useThumbSlot: {
-      type: Boolean,
-      value: false
-    },
-    useDetailSlot: {
-      type: Boolean,
-      value: false
-    },
-    thumb: String,
-    price: String,
-    title: String,
-    num: Number,
+  props: {
+    num: String,
     desc: String,
-    status: String
+    thumb: String,
+    title: String,
+    price: String,
+    centered: Boolean,
+    currency: {
+      type: String,
+      value: '¥'
+    }
   }
 });

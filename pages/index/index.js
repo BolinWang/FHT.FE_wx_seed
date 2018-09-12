@@ -5,17 +5,17 @@ import fetch from '../../utils/api'
 Page({
   data: {},
   // 分享
-  onShareAppMessage: function (res) {
+  onShareAppMessage (res) {
     if (res.from === 'button') {
       console.log(res.target)
     }
     return {
       title: '复恒小程序基建',
       path: '/pages/index/index',
-      success: function (res) {
+      success (res) {
 
       },
-      fail: function (res) {
+      fail (res) {
 
       }
     }

@@ -1,35 +1,36 @@
-'use strict';
+import { create } from '../common/create';
 
-Component({
-  externalClasses: ['custom-class', 'theme-class'],
+create({
+  field: true,
 
-  properties: {
+  classes: ['node-class'],
+
+  props: {
+    loading: Boolean,
+    disabled: Boolean,
     checked: {
       type: Boolean,
-      value: false
+      observer(value) {
+        this.setData({ value });
+      }
     },
-
-    loading: {
-      type: Boolean,
-      value: false
-    },
-
-    disabled: {
-      type: Boolean,
-      value: false
+    size: {
+      type: String,
+      value: '30px'
     }
   },
 
+  attached() {
+    this.setData({ value: this.data.checked });
+  },
+
   methods: {
-    handleZanSwitchChange: function handleZanSwitchChange() {
-      if (this.data.loading || this.data.disabled) {
-        return;
+    onClick() {
+      if (!this.data.disabled && !this.data.loading) {
+        const checked = !this.data.checked;
+        this.$emit('input', checked);
+        this.$emit('change', checked);
       }
-      var checked = !this.data.checked;
-      this.triggerEvent('change', {
-        checked: checked,
-        loading: this.data.loading
-      });
     }
   }
 });

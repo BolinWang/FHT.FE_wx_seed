@@ -1,22 +1,24 @@
-'use strict';
+import { create } from '../common/create';
 
-Component({
-  externalClasses: ['col-class'],
-
+create({
   relations: {
     '../row/index': {
-      type: 'parent'
+      type: 'ancestor'
     }
   },
 
-  properties: {
-    col: {
-      value: 0,
-      type: Number
-    },
-    offset: {
-      value: 0,
-      type: Number
+  props: {
+    span: Number,
+    offset: Number
+  },
+
+  methods: {
+    setGutter(gutter) {
+      const padding = `${gutter / 2}px`;
+      const style = gutter ? `padding-left: ${padding}; padding-right: ${padding};` : '';
+      if (style !== this.data.style) {
+        this.setData({ style });
+      }
     }
   }
 });
